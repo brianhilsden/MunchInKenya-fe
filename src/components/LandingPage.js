@@ -1,8 +1,10 @@
+
 import { Link } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 
 function LandingPage() {
   const [data] = useOutletContext() 
+
     return (
         <div>
            <div className="container p-2 m-4 ">

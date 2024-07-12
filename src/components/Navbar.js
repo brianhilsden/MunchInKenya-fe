@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Navbar({search, setSearch}) {
+function Navbar({search, setSearch,setUser,loggedIn,setIsLoggedIn}) {
+    const navigate = useNavigate()
     
     const handleSearch = (e) => {
         setSearch(e.target.value);
@@ -17,9 +19,10 @@ function Navbar({search, setSearch}) {
         }
       }
       const logout = () =>{
-        fetch("http://127.0.0.1:5555/logout",{method:"DELETE"})
-        .then((res) => res.json())
-
+        localStorage.removeItem("access_token");
+        setIsLoggedIn(false)
+        setUser(null)
+        navigate('/')
       }
 
     return (
@@ -40,9 +43,9 @@ function Navbar({search, setSearch}) {
                 </li>
               </div>
               <div>
-                <li className="nav-item ">
+                {!loggedIn && <li className="nav-item ">
                 <Link className="nav-link active p-3 fw-lighter fs-2" aria-current="page" to="/login">Login</Link>
-                </li>
+                </li>}
               </div>
               {/* <div>
                 <li className="nav-item">
@@ -75,12 +78,17 @@ function Navbar({search, setSearch}) {
       </form>
       <div classname="">
         <Link to="/signUp">
-        <button className="btn btn-outline-success btn-sm m-2">Signup</button>
+        {!loggedIn && <button className="btn btn-outline-success btn-sm m-2">Signup</button>}
         </Link>
-      <button className="btn btn-outline-danger btn-sm m-2" onClick={logout}>Log out</button>
+
+      {loggedIn && <button className="btn btn-outline-danger btn-sm m-2" onClick={logout}>Log out</button>}
+      
+
+     
       <Link to="/cart">
       <img src={"https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/256x256/shopping_cart.png"} width="50" height="50" className="d-inline-block align-top " alt=""></img>
       </Link>
+
 
 
       </div>

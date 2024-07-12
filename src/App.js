@@ -1,3 +1,4 @@
+
 import './App.css';
 import Navbar from './components/Navbar';
 import { Outlet } from 'react-router-dom';
@@ -22,6 +23,36 @@ function App() {
     const [filteredList, setFilteredList] = useState([]);
 
     const [data, setData] = useState([]);
+    const [user,setUser] = useState()
+    const [loggedIn,setIsLoggedIn] = useState(false)
+
+    useEffect(() => {
+      const token = localStorage.getItem('access_token');
+      if (token) {
+        fetch('http://127.0.0.1:5555/check_session', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to verify token');
+          }
+          return response.json(); // Parse JSON response
+        })
+        .then(userData => {
+          setIsLoggedIn(true);
+          setUser(userData); // Set user data once fetched
+        })
+        .catch(error => {
+          console.error('Token verification failed:', error);
+          setIsLoggedIn(false);
+          setUser(null); // Reset user state if verification fails
+          localStorage.removeItem('access_token');
+        });
+      }
+    }, []);
+
     useEffect(()=>{
         fetch("http://127.0.0.1:5555/restaurant")
         .then((res)=>res.json())
@@ -48,10 +79,13 @@ function App() {
           return () => clearTimeout(delaySearch);
         }, [search, data]); 
       
+      
   return (
     <>
-      <Navbar search = {search} setSearch={setSearch}/>
-      <Outlet context={[filteredList,addToCart,removeFromCart,cart]}/>  
+
+      <Navbar search = {search} setSearch={setSearch} setUser={setUser} loggedIn={loggedIn} setIsLoggedIn={setIsLoggedIn}/>
+      <Outlet context={[filteredList,addToCart,removeFromCart,cart,user,setUser,setIsLoggedIn]}/>  
+
 
 
     </>
