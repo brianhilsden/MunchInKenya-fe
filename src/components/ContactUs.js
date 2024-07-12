@@ -49,6 +49,7 @@ function ContactUs() {
   };
 
   return (
+    <div style={{backgroundColor:"whitesmoke"}}>
     <div className="contact-us-form-container">
       <h2 style={{textAlign:'center'}}>Contact Us</h2>
       <form onSubmit={handleSubmit} className="contact-form">
@@ -87,6 +88,7 @@ function ContactUs() {
         <button type="submit">Submit</button>
       </form>
     </div>
+   </div>
   );
 }
 
