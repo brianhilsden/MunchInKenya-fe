@@ -44,15 +44,26 @@ function Navbar({search, setSearch}) {
                 <Link className="nav-link active p-3 fw-lighter fs-2" aria-current="page" to="/login">Login</Link>
                 </li>
               </div>
-              <div>
+              {/* <div>
                 <li className="nav-item">
                 <Link className="nav-link active p-3 fw-lighter fs-2" aria-current="page" to="/contactUs">Contact Us</Link>
               </li>
+              </div> */}
+              <div>
+              <li class="nav-item dropdown">
+          <li class="nav-link dropdown-toggle p-3 fw-lighter fs-2"   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contacts
+          </li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <Link className="dropdown-item  p-1 fw-lighter fs-4" aria-current="page" to="/contactUs">Contact Us</Link>
+          <Link className="dropdown-item  p-1 fw-lighter fs-4" aria-current="page" to="/feedbackForm">Feedback</Link>
+          </ul>
+        </li>
               </div>
 
               <div>
                 <li className="nav-item">
-                <Link className="nav-link active p-3 fw-lighter fs-2" aria-current="page" to="/trackOrder">Track Order</Link>
+                <Link className="nav-link active p-3 fw-lighter fs-2" aria-current="page" to="/trackOrder">Order</Link>
                 </li>
               </div>
             
@@ -67,14 +78,18 @@ function Navbar({search, setSearch}) {
         <button className="btn btn-outline-success btn-sm m-2">Signup</button>
         </Link>
       <button className="btn btn-outline-danger btn-sm m-2" onClick={logout}>Log out</button>
-      <img src={"https://t3.ftcdn.net/jpg/00/26/12/44/360_F_26124443_QQVqQWwQGQFqBQg9QACdpktxYQ7xIRkY.jpghttps://t3.ftcdn.net/jpg/00/26/12/44/360_F_26124443_QQVqQWwQGQFqBQg9QACdpktxYQ7xIRkY.jpg"} width="100" height="50" className="d-inline-block align-top" alt=""></img>
+      <Link to="/cart">
+      <img src={"https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/256x256/shopping_cart.png"} width="50" height="50" className="d-inline-block align-top " alt=""></img>
+      </Link>
 
 
       </div>
           </div>
         </div>
       </nav>
+      
         </div>
+        
     );
 }
 
