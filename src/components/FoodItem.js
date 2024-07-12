@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { useOutletContext } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function FoodItem() {
     const { id } = useParams();
+    const [addToCart,removeFromCart,cart] = useOutletContext();
+    const navigate = useNavigate()
 
     const [foodItem, setFoodItem] = useState(null);
 
@@ -14,6 +18,14 @@ function FoodItem() {
             })
             .catch(error => console.error('Error fetching data:', error));
     }, [id]);
+
+    const handleAddToCart = () => {
+        if (foodItem) {
+            addToCart(foodItem);
+            navigate('/cart')
+            alert(`${foodItem.name} has been added to the cart!`);
+        }
+    };
 
     const background = foodItem && foodItem.price > 10 ? '#f0f0f0' : '#ffffff';
 
@@ -34,7 +46,7 @@ function FoodItem() {
                                         <div className="mb-3">
                                             <span className="text-muted">Price:</span> {foodItem.price.toFixed(2)}
                                         </div>
-                                        <button className="btn btn-primary mb-3">
+                                        <button className="btn btn-primary mb-3" onClick={handleAddToCart}>
                                             Add to Cart
                                         </button>
                                     </div>
