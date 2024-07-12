@@ -7,7 +7,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import SignUp from "./components/SignUp";
 import TrackOrder from "./components/TrackOrder";
 import ErrorPage from "./components/ErrorPage";
-
+import FeedbackForm from "./components/Feedback";
 const routes = [
   {
     path: "/",
@@ -24,6 +24,7 @@ const routes = [
       },
       { path: "/signUp", element: <SignUp /> },
       { path: "/trackOrder", element: <TrackOrder /> },
+      {path:  "/feedbackForm", element:<FeedbackForm/>},
     ]
   }
 ];
