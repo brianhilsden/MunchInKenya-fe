@@ -1,41 +1,48 @@
-import { useEffect, useState } from 'react';
+
 import './App.css';
 import Navbar from './components/Navbar';
 import { Outlet } from 'react-router-dom';
-import Cookies from 'js-cookie';
+
+import { useState, useEffect } from 'react';
+
 function App() {
-  const [user,setUser] = useState({})
-  const [showLogIn,setShowLogin] = useState(true)
 
+    const [search, setSearch] = useState("");
+    const [filteredList, setFilteredList] = useState([]);
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:5555/check_session",{
-      method:"GET"
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data) { // Assuming the backend sends 'user' data if logged in
-          setUser(data);
-        }
+    const [data, setData] = useState([]);
+    useEffect(()=>{
+        fetch("http://127.0.0.1:5555/restaurant")
+        .then((res)=>res.json())
+        .then((data)=>setData(data))
+    },[])
+    useEffect(() => {
+          const filterList = () => {
+            const keywords = search.toLowerCase().split(" ");
+            const filteredList = data.filter((restaurant) => {
+              return keywords.every((keyword) => {
+                return (
+                  restaurant.name.toLowerCase().includes(keyword)
+                );
+              });
+            });
+            setFilteredList(filteredList);
+          };
       
-      });
-  }, []);
-
-
-useEffect(() => {
-  const sessionCookie = Cookies.get('session'); // Replace 'session' with your cookie name
-  if (sessionCookie) {
-    console.log("found")
-  }
-  else{
-    console.log("nope");
-  }
-}, []);
-  console.log(user);
+      
+          const delaySearch = setTimeout(() => {
+            filterList();
+          }, 300); 
+      
+          return () => clearTimeout(delaySearch);
+        }, [search, data]); 
+      
   return (
     <>
-      <Navbar setUser={setUser} showLogIn={showLogIn} setShowLogin={setShowLogin}/>
-      <Outlet context={[user,setUser]}/>  
+      <Navbar search = {search} setSearch={setSearch}/>
+      <Outlet context={[filteredList]}/>  
+
+7
     </>
   )
   }
