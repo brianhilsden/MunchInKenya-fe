@@ -67,14 +67,16 @@ function Navbar({search, setSearch}) {
         <button className="btn btn-outline-success btn-sm m-2">Signup</button>
         </Link>
       <button className="btn btn-outline-danger btn-sm m-2" onClick={logout}>Log out</button>
-      <img src={"https://t3.ftcdn.net/jpg/00/26/12/44/360_F_26124443_QQVqQWwQGQFqBQg9QACdpktxYQ7xIRkY.jpghttps://t3.ftcdn.net/jpg/00/26/12/44/360_F_26124443_QQVqQWwQGQFqBQg9QACdpktxYQ7xIRkY.jpg"} width="100" height="50" className="d-inline-block align-top" alt=""></img>
+      <img src={"https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/256x256/shopping_cart.png"} width="50" height="50" className="d-inline-block align-top " alt=""></img>
 
 
       </div>
           </div>
         </div>
       </nav>
+      
         </div>
+        
     );
 }
 

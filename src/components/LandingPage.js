@@ -65,6 +65,41 @@ function LandingPage() {
           ))}
         </div>
       </div>
+      <div className="row bg-light m-2" >
+                <div className="col-md-6">
+                    <header>
+                        <h3 className="text-dark fw-lighter fs-2 ">Call Us</h3>
+                    </header>
+                
+                    <a className="text-white" href="0705237806">
+                        <span className="text-dark">020-123-789</span>
+                    </a>
+                    <header>
+                        <h3  className="text-dark fw-lighter fs-2 ">Email Us</h3>
+                    </header>
+                    <a href="vikakamau04@gmail.com" className="text-white">
+                        <span className="text-dark">MunchinKenya@gmail.Com</span>
+                    </a>
+                    <header>
+                        <h3  className="text-dark fw-lighter fs-2 ">Reach Us Through</h3>
+                    </header>
+                    <img src="https://img.freepik.com/free-vector/instagram-vector-social-media-icon-7-june-2021-bangkok-thailand_53876-136728.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1720742400&semt=ais_user" style={{ width: "50px", height:"40px",objectFit: "cover" }} alt=""/>
+                    <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" style={{ width: "50px", height:"40px",objectFit: "cover" }} alt=""/>
+                    <img src="https://static.vecteezy.com/system/resources/previews/018/930/698/original/facebook-logo-facebook-icon-transparent-free-png.png" style={{ width: "50px", height:"40px",objectFit: "cover" }} alt=""/>
+
+
+                    
+                </div>
+                <div className="col-md-6 text-right" >
+                    <header>
+                        <h3 className="text-dark fw-lighter fs-2">Business Hours</h3>
+                    </header>
+                    <h5 className="text-dark fw-lighter fs-5">Monday-Friday: 6:30am to 11:30pm</h5>
+                    <h5 className="text-dark fw-lighter fs-5">Saturday: 7:00am to 9:00pm</h5>
+                    <h5 className="text-dark fw-lighter fs-5">Sunday: 10:00am to 7:00pm</h5>
+                </div>
+               
+            </div>
         </div>
     );
 }
