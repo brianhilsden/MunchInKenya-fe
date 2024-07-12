@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 
 function Login() {
-  const [user, setUser] = useOutletContext();
+  const [ ,user, setUser,setIsLoggedIn] = useOutletContext();
   const [error, setError] = useState();
   const navigate = useNavigate()
   const formSchema = yup.object().shape({
@@ -29,40 +29,53 @@ function Login() {
         }).then((res) => {
           if (res.ok) {
             res.json().then((data) => {
-              setUser(data);
+              localStorage.setItem("access_token", data.access_token);
+              setUser(data.user);
               setError(null);
-            });
+              setIsLoggedIn(true)
+             
+             
+              
+            }).then( navigate("/"));
           } else {
             res.json().then((err) => setError(err.error));
           }
         });
       },
-  });
+  })
   console.log(user);
 
+
+
   return (
-    <div>
+    <div className="p-4 shadow rounded-lg bg-light">
+     
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="email">Email Address</label>
-        <br />
         <input
           id="email"
           name="email"
+          placeholder="Email"
+          className="form-control my-2"
           onChange={formik.handleChange}
           value={formik.values.email}
         />
         <p style={{ color: "red" }}> {formik.errors.email}</p>
 
-        <label htmlFor="password">Password</label>
-        <br />
         <input
           id="password"
           name="password"
+          placeholder="Password"
+          className="form-control my-2"
           onChange={formik.handleChange}
           value={formik.values.password}
         />
         <p style={{ color: "red" }}> {formik.errors.password}</p>
-        <button type="submit">Submit</button>
+        <div id="button_container" class="text-center mt-3">
+            <button id="login" class="btn btn-primary mx-1" type="submit">Login</button>
+            <p>Don't have an account? <span style={{color: "blue",cursor: "pointer"}} id="register-page" onClick={()=>navigate("/signUp")}>Register here</span></p>
+            <p id="forgotten" style={{color: "blue",cursor: "pointer"}}>Forgotten password?</p>
+        </div>
+        
       </form>
       {error && <p>{error}</p>}
     </div>
