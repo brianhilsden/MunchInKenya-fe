@@ -1,11 +1,11 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import { Outlet } from 'react-router-dom';
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 
 function App() {
-  const [cart, setCart] = useState([]);
-
+    const [cart, setCart] = useState([]);
     const addToCart = (item) => {
         setCart((prevCart) => {
             const newCart = [...prevCart, item];
@@ -18,10 +18,42 @@ function App() {
     const removeFromCart = (id) => {
         setCart((prevCart) => prevCart.filter(item => item.id !== id));
     };
+    const [search, setSearch] = useState("");
+    const [filteredList, setFilteredList] = useState([]);
+
+    const [data, setData] = useState([]);
+    useEffect(()=>{
+        fetch("http://127.0.0.1:5555/restaurant")
+        .then((res)=>res.json())
+        .then((data)=>setData(data))
+    },[])
+    useEffect(() => {
+          const filterList = () => {
+            const keywords = search.toLowerCase().split(" ");
+            const filteredList = data.filter((restaurant) => {
+              return keywords.every((keyword) => {
+                return (
+                  restaurant.name.toLowerCase().includes(keyword)
+                );
+              });
+            });
+            setFilteredList(filteredList);
+          };
+      
+      
+          const delaySearch = setTimeout(() => {
+            filterList();
+          }, 300); 
+      
+          return () => clearTimeout(delaySearch);
+        }, [search, data]); 
+      
   return (
     <>
-      <Navbar/>
-      <Outlet context={[addToCart,removeFromCart,cart]}/>  
+      <Navbar search = {search} setSearch={setSearch}/>
+      <Outlet context={[filteredList,addToCart,removeFromCart,cart]}/>  
+
+
     </>
   )
   }
