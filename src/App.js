@@ -1,10 +1,23 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import { Outlet } from 'react-router-dom';
+
 import { useState, useEffect } from 'react';
 
 function App() {
+    const [cart, setCart] = useState([]);
+    const addToCart = (item) => {
+        setCart((prevCart) => {
+            const newCart = [...prevCart, item];
+            console.log('Updated cart:', newCart); // Log the updated cart state
+            return newCart;
+        });
+    };
+    
 
+    const removeFromCart = (id) => {
+        setCart((prevCart) => prevCart.filter(item => item.id !== id));
+    };
     const [search, setSearch] = useState("");
     const [filteredList, setFilteredList] = useState([]);
 
@@ -38,7 +51,8 @@ function App() {
   return (
     <>
       <Navbar search = {search} setSearch={setSearch}/>
-      <Outlet context={[filteredList]}/>  
+      <Outlet context={[filteredList,addToCart,removeFromCart,cart]}/>  
+
 
     </>
   )
