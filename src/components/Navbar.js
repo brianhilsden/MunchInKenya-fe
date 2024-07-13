@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { getAuth, signOut } from "firebase/auth";
 
 function Navbar({search, setSearch,setUser,loggedIn,setIsLoggedIn}) {
+    const auth = getAuth();
     const navigate = useNavigate()
     
     const handleSearch = (e) => {
@@ -20,6 +22,11 @@ function Navbar({search, setSearch,setUser,loggedIn,setIsLoggedIn}) {
       }
       const logout = () =>{
         localStorage.removeItem("access_token");
+        signOut(auth).then(() => {
+          // Sign-out successful.
+        }).catch((error) => {
+          // An error happened.
+        });
         setIsLoggedIn(false)
         setUser(null)
         navigate('/')
@@ -53,11 +60,11 @@ function Navbar({search, setSearch,setUser,loggedIn,setIsLoggedIn}) {
               </li>
               </div> */}
               <div>
-              <li class="nav-item dropdown">
-          <li class="nav-link dropdown-toggle p-3 fw-lighter fs-2"   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <li className="nav-item dropdown">
+          <li className="nav-link dropdown-toggle p-3 fw-lighter fs-2"   role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Contacts
           </li>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
           <Link className="dropdown-item  p-1 fw-lighter fs-4" aria-current="page" to="/contactUs">Contact Us</Link>
           <Link className="dropdown-item  p-1 fw-lighter fs-4" aria-current="page" to="/feedbackForm">Feedback</Link>
           </ul>
