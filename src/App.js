@@ -84,7 +84,7 @@ function App() {
     <>
 
       <Navbar search = {search} setSearch={setSearch} setUser={setUser} loggedIn={loggedIn} setIsLoggedIn={setIsLoggedIn}/>
-      <Outlet context={[filteredList,addToCart,removeFromCart,cart,user,setUser,setIsLoggedIn]}/>  
+      <Outlet context={[data,filteredList,addToCart,removeFromCart,cart,user,setUser,setIsLoggedIn]}/>  
 
 
 

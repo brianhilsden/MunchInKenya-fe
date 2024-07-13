@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 
 function LandingPage() {
-  const [data] = useOutletContext() 
+  const [data,filteredList,addToCart,removeFromCart,cart,user,setUser,setIsLoggedIn] = useOutletContext() 
 
     return (
         <div>
@@ -66,6 +66,7 @@ function LandingPage() {
             </div>
           ))}
         </div>
+        
       </div>
       <div className="row bg-light m-2" >
                 <div className="col-md-6">

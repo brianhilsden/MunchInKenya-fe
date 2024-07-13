@@ -71,11 +71,13 @@ function Navbar({search, setSearch,setUser,loggedIn,setIsLoggedIn}) {
               </div>
             
             </ul>
+
             <form classname="d-flex ">
         <input classname="form-control m-2" type="text" placeholder="Search For Restaurant" onChange={handleSearch} value={search}/>
       </form>
       <form classname="d-flex " onSubmit={handleSubmit}>
       <button className="btn btn-outline-info btn-sm m-3" type="submit" >Search</button>
+
       </form>
 
       <div classname="">
