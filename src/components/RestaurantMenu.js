@@ -1,8 +1,9 @@
-// src/RestaurantMenu.js
+import { useParams, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const RestaurantMenu = ({ id }) => {
+const RestaurantMenu = () => {
+  const { id } = useParams();
   const [menu, setMenu] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -30,9 +31,12 @@ const RestaurantMenu = ({ id }) => {
       <h1>Restaurant Menu</h1>
       {menu ? (
         <ul>
-          {menu.items.map((item) => (
+          {menu.map((item) => (
             <li key={item.id}>
-              {item.name}: {item.price}
+              <Link to={`/fooditem/${item.id}`}>
+                <img src={item.image} alt={item.name} style={{ width: '100px', height: '100px', objectFit: 'cover' }} />
+                <div>{item.name}: {item.description}: ${item.price}</div>
+              </Link>
             </li>
           ))}
         </ul>
@@ -44,3 +48,4 @@ const RestaurantMenu = ({ id }) => {
 };
 
 export default RestaurantMenu;
+
