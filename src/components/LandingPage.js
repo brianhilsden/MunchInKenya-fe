@@ -39,7 +39,7 @@ function LandingPage() {
           <h1 className="text-center fst-italic">CHOOSE DESIRED RESTAURANT</h1>
          
         <div className="row">
-          {data.map((restaurant) => (
+          {filteredList.map((restaurant) => (
             <div key={restaurant.id} className="col-sm-4 mb-2 mx-auto" id="restaurants">
               <div className="card">
                 <Link to={`/restaurantMenu/${restaurant.id}`}>
