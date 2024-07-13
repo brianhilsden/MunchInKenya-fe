@@ -136,7 +136,7 @@ const SignUp = () => {
           name="email"
           
           onChange={formik.handleChange}
-          value={formik.values.name}/>
+          value={formik.values.email}/>
            <input type="text" placeholder="name" className="form-input" id="name"
           name="name"
           
