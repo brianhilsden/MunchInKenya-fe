@@ -5,7 +5,7 @@ function TrackOrder() {
     const [orderStatus, setOrderStatus] = useState('Preparing order');
     const [showReview,setShowReview] = useState(false)
     const [message,setMessage] = useState("")
-    const [ ,user, setUser,setIsLoggedIn] = useOutletContext();
+    const [data,filteredList,addToCart,removeFromCart,cart,user,setUser,setIsLoggedIn] = useOutletContext();
     const [orders,setOrders] = useState()
 
     const simulateOrderProgress = () => {

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useOutletContext } from 'react-router-dom';
 
 function Cart() {
-    const [addToCart, removeFromCart, cart] = useOutletContext();
+    const [data,filteredList,addToCart,removeFromCart,cart,user,setUser,setIsLoggedIn] = useOutletContext();
 
     console.log('Cart contents:', cart); // For debugging
 

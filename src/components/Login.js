@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 
 function Login() {
-  const [ ,user, setUser,setIsLoggedIn] = useOutletContext();
+  const [data,filteredList,addToCart,removeFromCart,cart,user,setUser,setIsLoggedIn] = useOutletContext();
   const [error, setError] = useState();
   const navigate = useNavigate()
   const formSchema = yup.object().shape({

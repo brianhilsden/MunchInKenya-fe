@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 function FoodItem() {
     const { id } = useParams();
-    const [addToCart,removeFromCart,cart] = useOutletContext();
+    const [data,filteredList,addToCart,removeFromCart,cart,user,setUser,setIsLoggedIn] = useOutletContext();
     const navigate = useNavigate()
 
     const [foodItem, setFoodItem] = useState(null);
