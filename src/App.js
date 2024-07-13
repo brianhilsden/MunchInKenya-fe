@@ -78,7 +78,7 @@ function App() {
       
           return () => clearTimeout(delaySearch);
         }, [search, data]); 
-      
+      console.log(user);
       
   return (
     <>
