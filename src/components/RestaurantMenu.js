@@ -1,8 +1,9 @@
-// src/RestaurantMenu.js
+import { useParams, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const RestaurantMenu = ({ id }) => {
+const RestaurantMenu = () => {
+  const { id } = useParams();
   const [menu, setMenu] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -26,16 +27,30 @@ const RestaurantMenu = ({ id }) => {
   if (error) return <p>Error loading menu: {error.message}</p>;
 
   return (
-    <div>
+    <div className="container">
       <h1>Restaurant Menu</h1>
       {menu ? (
-        <ul>
-          {menu.items.map((item) => (
-            <li key={item.id}>
-              {item.name}: {item.price}
-            </li>
+        <div className="row">
+          {menu.map((item) => (
+            <div className="col-md-4 mb-4" key={item.id}>
+              <Link to={`/fooditem/${item.id}`} className="text-decoration-none">
+                <div className="card h-100">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="card-img-top"
+                    style={{ height: '200px', objectFit: 'cover' }}
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{item.name}</h5>
+                    <p className="card-text">{item.description}</p>
+                    <p className="card-text">${item.price}</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <p>No menu available.</p>
       )}
