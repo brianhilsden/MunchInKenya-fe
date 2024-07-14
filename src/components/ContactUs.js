@@ -49,7 +49,7 @@ function ContactUs() {
   };
 
   return (
-    <div style={{backgroundColor:"whitesmoke"}}>
+    <div style={{backgroundImage:"https://unsplash.com/photos/a-wooden-cutting-board-topped-with-blueberries-and-grapes-Z8GEw7adf5U"}}>
     <div className="contact-us-form-container">
       <h2 style={{textAlign:'center'}}>Contact Us</h2>
       <form onSubmit={handleSubmit} className="contact-form">
