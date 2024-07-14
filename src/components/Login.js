@@ -35,7 +35,7 @@ function Login() {
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
-      fetch("http://127.0.0.1:5555/login", {
+      fetch("https://muchinkenya-be.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,23 +53,24 @@ function Login() {
             })
             .then(navigate("/"));
         } else {
+          
           res.json().then((err) => setError(err.error));
         }
       });
     },
   });
-  console.log(user);
+
 
   function googleLogin() {
     signInWithPopup(auth, provider)
       .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
+     
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
 
         // The signed-in user info.
         const user = result.user;
-        fetch("http://127.0.0.1:5555/userByEmail", {
+        fetch("https://muchinkenya-be.onrender.com/userByEmail", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -87,7 +88,7 @@ function Login() {
               })
               .then(navigate("/"));
           } else {
-            fetch("http://127.0.0.1:5555/signup", {
+            fetch("https://muchinkenya-be.onrender.com/signup", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -96,6 +97,7 @@ function Login() {
                 name: user.displayName,
                 email: user.email,
                 phone_number: user.phoneNumber,
+                password:"1234"
               }),
             }).then((res) => {
               if (res.ok) {
@@ -114,19 +116,18 @@ function Login() {
             });
           }
         });
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
+   
 
         setUser();
-        console.log(user);
+       
       })
       .catch((error) => {
-        // Handle Errors here.
+    
         const errorCode = error.code;
         const errorMessage = error.message;
-        // The email of the user's account used.
+      
         const email = error.customData.email;
-        // The AuthCredential type that was used.
+     
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
       });
@@ -135,9 +136,10 @@ function Login() {
     <div className="login-container">
       <div className="login-box">
         <div className="login-left" >
-          <h2>Login to Your Account</h2>
-          <p>The Faster you Login, The Faster we get to work</p>
-          <form>
+          <h1 style={{fontWeight:"bold"}}>Login to Your Account</h1>
+          Get ready to savor delicious flavors delivered right to your doorstep
+          <form onSubmit={formik.handleSubmit}>
+            
             <div className="input-group">
              
               <input
@@ -149,7 +151,9 @@ function Login() {
                 onChange={formik.handleChange}
                 value={formik.values.email}
               />
+              
             </div>
+           
             <div className="input-group">
              
               <input
@@ -162,15 +166,16 @@ function Login() {
                 value={formik.values.password}
               />
             </div>
+            {error && <div style={{textAlign:"center"}}>{error}</div>}
             <button type="submit" className="login-button">
               Login
             </button>
           </form>
           <div className="alternative-login">
             <p>OR</p>
-            <div className="social-login">
+            <div className="alter-login">
               <button className="google-login" onClick={googleLogin} ><img src={logo} width={25}/>Login with Google</button>
-              <button className="apple-login">Login with Apple</button>
+            
             </div>
           </div>
           <p className="signup-link">
@@ -187,165 +192,3 @@ function Login() {
 }
 
 export default Login;
-
-/* 
-
-import { useFormik } from "formik";
-import { useState } from "react";
-import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
-import { useOutletContext } from "react-router-dom";
-import { auth,provider } from "./firebase";
-import  {getAuth,signInWithPopup,GoogleAuthProvider} from "firebase/auth"
-import logo from "./Logo-google-icon-PNG.png"
-
-function Login() {
-  const [data,filteredList,addToCart,removeFromCart,cart,user,setUser,setIsLoggedIn] = useOutletContext();
-  const [error, setError] = useState();
-  const navigate = useNavigate()
-  const formSchema = yup.object().shape({
-    email: yup.string().email("Invalid email").required("Must enter email"),
-    password: yup.string().required("Must enter password"),
-  });
-
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validationSchema: formSchema,
-    onSubmit: (values) => {
-        fetch("http://127.0.0.1:5555/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        }).then((res) => {
-          if (res.ok) {
-            res.json().then((data) => {
-              localStorage.setItem("access_token", data.access_token);
-              setUser(data.user);
-              setError(null);
-              setIsLoggedIn(true)
-             
-             
-              
-            }).then( navigate("/"));
-          } else {
-            res.json().then((err) => setError(err.error));
-          }
-        });
-      },
-  })
-  console.log(user);
-
-  function googleLogin(){
-    signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    
-  
-    // The signed-in user info.
-    const user = result.user;
-    fetch("http://127.0.0.1:5555/userByEmail", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({"email":user.email}),
-    }).then((res) => {
-      if (res.ok) {
-        res.json().then((data) => {
-          localStorage.setItem("access_token", data.access_token);
-          setUser(data.user);
-          setError(null);
-          setIsLoggedIn(true)
-         
-         
-          
-        }).then( navigate("/"));
-      } else {
-        fetch("http://127.0.0.1:5555/signup", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({"name":user.displayName,"email":user.email,"phone_number":user.phoneNumber}),
-        }).then((res) => {
-          if (res.ok) {
-            res.json().then((data) => {
-              localStorage.setItem("access_token", data.access_token);
-              setUser(data.user);
-              setError(null);
-              setIsLoggedIn(true)
-         
-            }).then(()=>navigate("/"));
-          } else {
-            res.json().then((err) => setError(err.error));
-          }
-        });
-      }
-    });
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
-    
-    setUser()
-    console.log(user);
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-  });
-  }
-
-
-  return (
-    <div className="p-4 shadow rounded-lg bg-light" style={{height:"100vh"}}>
-      
-      <form onSubmit={formik.handleSubmit}>
-        <input
-          id="email"
-          name="email"
-          placeholder="Email"
-          className="form-control my-2"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-        />
-        <p style={{ color: "red" }}> {formik.errors.email}</p>
-
-        <input
-          id="password"
-          name="password"
-          placeholder="Password"
-          type="password"
-          className="form-control my-2"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-        />
-        <p style={{ color: "red" }}> {formik.errors.password}</p>
-        <div id="button_container" className="text-center mt-3">
-        <div id="button_container" className="text-center d-flex flex-column align-center " style={{width:"20%", margin: "0 auto"}}>
-              <button id="Log In" className="btn btn-primary" type="submit" style={{width:"100%",height:"6vh", fontSize: "larger"}}>Log In</button><hr/>
-              <button onClick={googleLogin} style={{ backgroundColor: "grey",height:"6vh", fontSize: "larger" }}><img src={logo} width={25}/>&nbsp;&nbsp;Continue with Google</button>
-          </div><br/>
-            <p>Don't have an account? <span style={{color: "blue",cursor: "pointer"}} id="register-page" onClick={()=>navigate("/signUp")}>Register here</span></p>
-            
-        </div>
-        
-      </form>
-      
-      {error && <p>{error}</p>}
-    </div>
-  );
-}
-
-export default Login;
- */
