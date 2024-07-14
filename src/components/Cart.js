@@ -8,8 +8,8 @@ function Cart() {
 
     const handlePurchase = (item) => {
         const purchaseData = {
-            food_id: item.id,
-            customer_id: 1 // Replace with the actual customer ID as needed
+            food_id:item.id,
+            customer_id:user.id
         };
 
         fetch('http://127.0.0.1:5555/orders', {
