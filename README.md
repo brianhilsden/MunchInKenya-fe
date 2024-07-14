@@ -70,6 +70,7 @@ Contributers
  Njeri255mungai@gmail.com
  jafar.maalim@student.moringaschool.com
  gracenjau2005@gmail.com
+ brianhilsden@gmail.com
 
 📄 License
 This project is licensed under the MIT License.
