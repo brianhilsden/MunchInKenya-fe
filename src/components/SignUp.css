@@ -1,119 +1,159 @@
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-  }
-  
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 88vh;
+  background-color: #f0f0f0;
+}
+
+.signup-container {
+  display: flex;
+  height: 78vh;
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  flex-direction: row;
+}
+
+.left, .right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.left {
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.right {
+  background-color: #000;
+  color: white;
+  text-align: center;
+  background-image: url('https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+}
+
+h1 {
+  font-size: 3em;
+  margin: 0;
+}
+
+p {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.google-sign-in {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 20px 0;
+  cursor: pointer;
+  font-size: 1em;
+  border-radius: 5px;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.or {
+  margin: 20px 0;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-input {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.form-button {
+  padding: 10px;
+  background-color: #000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.forgot-password, .login-link {
+  margin: 10px 0;
+}
+
+.login-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
   .signup-container {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .left, .right {
-    flex: 1;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .left {
-    background-color: #f8f9fa;
-    text-align: center;
-  }
-  
-  .language-selector {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .flag-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-  }
-  
-  h1 {
-    font-size: 3em;
-    margin: 0;
-  }
-  
-  p {
-    font-size: 1.2em;
-    margin: 10px 0;
-  }
-  
-  .google-sign-in {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #4285f4;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 20px 0;
-    cursor: pointer;
-    font-size: 1em;
-    border-radius: 5px;
-  }
-  
-  .google-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-  }
-  
-  .or {
-    margin: 20px 0;
-  }
-  
-  .signup-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  .form-input {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .form-button {
-    padding: 10px;
-    background-color: #000;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .forgot-password, .login-link {
-    margin: 10px 0;
-  }
-  
-  .login-link a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .right {
-    background-color: #000;
-    color: white;
-    text-align: center;
-  }
-  
-  .image-container {
-    position: relative;
-  }
-  
-  .astronaut-image {
-    max-width: 100%;
     height: auto;
   }
-  
+
+  .left, .right {
+    padding: 10px;
+    height: auto;
+  }
+
+  .right {
+    display: none; /* Optionally hide the right side on smaller screens */
+  }
+
+  .google-sign-in {
+    width: 100%;
+  }
+
+  .signup-form {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  .form-input {
+    padding: 8px;
+    margin: 8px 0;
+  }
+
+  .form-button {
+    padding: 8px;
+  }
+
+  .login-link {
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}

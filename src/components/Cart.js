@@ -8,11 +8,13 @@ function Cart() {
 
     const handlePurchase = (item) => {
         const purchaseData = {
-            food_id:item.id,
-            customer_id:user.id
+
+            food_id: item.id,
+            customer_id: user.id // Replace with the actual customer ID as needed
+
         };
 
-        fetch('http://127.0.0.1:5555/orders', {
+        fetch('https://muchinkenya-be.onrender.com/orders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,16 +29,17 @@ function Cart() {
         })
         .then(data => {
             alert(`Purchased ${item.name} successfully!`);
+            navigate('/trackOrder');
         })
         .catch(error => {
             console.error('There was a problem with the purchase:', error);
             alert('Purchase failed. Please try again.');
         });
-        navigate('/trackOrder');
+        
     };
 
     const handleRemove = (itemId) => {
-        fetch(`http://127.0.0.1:5555/orders/${itemId}`, {
+        fetch(`https://muchinkenya-be.onrender.com/${itemId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -92,6 +95,7 @@ function Cart() {
                     ))}
                 </div>
             )}
+            
         </div>
     );
 }

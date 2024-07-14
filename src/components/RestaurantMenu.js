@@ -1,6 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 const RestaurantMenu = () => {
   const { id } = useParams();
@@ -11,7 +13,7 @@ const RestaurantMenu = () => {
   useEffect(() => {
     const fetchMenu = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:5555/restaurant_menu/${id}`);
+        const response = await axios.get(`https://muchinkenya-be.onrender.com/restaurant_menu/${id}`);
         setMenu(response.data);
         setLoading(false);
       } catch (err) {
@@ -23,7 +25,26 @@ const RestaurantMenu = () => {
     fetchMenu();
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p> <Button variant="success" disabled>
+  <Spinner
+    as="span"
+    animation="border"
+    size="sm"
+    role="status"
+    aria-hidden="true"
+  />
+  <span className="visually-hidden">Loading...</span>
+</Button>{' '}
+<Button variant="dark" disabled>
+  <Spinner
+    as="span"
+    animation="grow"
+    size="sm"
+    role="status"
+    aria-hidden="true"
+  />
+  Getting the menu ready...
+</Button></p>;
   if (error) return <p>Error loading menu: {error.message}</p>;
 
   return (

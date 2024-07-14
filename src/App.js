@@ -25,11 +25,12 @@ function App() {
     const [data, setData] = useState([]);
     const [user,setUser] = useState()
     const [loggedIn,setIsLoggedIn] = useState(false)
+    const [latestOrder,setLatestOrder] = useState()
 
     useEffect(() => {
       const token = localStorage.getItem('access_token');
       if (token) {
-        fetch('http://127.0.0.1:5555/check_session', {
+        fetch('https://muchinkenya-be.onrender.com/check_session', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -54,7 +55,7 @@ function App() {
     }, []);
 
     useEffect(()=>{
-        fetch("http://127.0.0.1:5555/restaurant")
+        fetch("https://muchinkenya-be.onrender.com/restaurant")
         .then((res)=>res.json())
         .then((data)=>setData(data))
     },[])
@@ -78,13 +79,24 @@ function App() {
       
           return () => clearTimeout(delaySearch);
         }, [search, data]); 
-      console.log(user);
+    
+      useEffect(()=>{
+        if (user){
+          fetch(`https://muchinkenya-be.onrender.com/past_orders/${user.id}`)
+        .then(res=>res.json())
+        .then(data=>setLatestOrder(data[0]))
+
+        }
+        
+  
+      },[user])
+    
       
   return (
     <>
 
-      <Navbar search = {search} setSearch={setSearch} setUser={setUser} loggedIn={loggedIn} setIsLoggedIn={setIsLoggedIn}/>
-      <Outlet context={[data,filteredList,addToCart,removeFromCart,cart,user,setUser,setIsLoggedIn]}/>  
+      <Navbar search = {search} setSearch={setSearch} setUser={setUser} loggedIn={loggedIn} setIsLoggedIn={setIsLoggedIn} setCart={setCart}/>
+      <Outlet context={[data,filteredList,addToCart,removeFromCart,cart,user,setUser,setIsLoggedIn,latestOrder,setLatestOrder]}/>  
 
 
 

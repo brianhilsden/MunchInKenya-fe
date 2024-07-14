@@ -1,0 +1,38 @@
+/* LandingPage.css */
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .landing-img {
+      width: 100% !important;
+      height: auto !important;
+    }
+  
+    .about-img {
+      width: 100% !important;
+      height: auto !important;
+    }
+  
+    .restaurant-card {
+      width: 100% !important;
+      margin-bottom: 1rem !important;
+    }
+  
+    .restaurant-card img {
+      width: 100% !important;
+      height: auto !important;
+    }
+  
+    .contact-section img {
+      width: 30px !important;
+      height: 30px !important;
+    }
+  
+    .contact-section .business-hours {
+      text-align: left !important;
+    }
+  
+    .card-container {
+      margin-top: 2rem; /* Add margin to separate cards from the top text and images */
+    }
+  }
+  
