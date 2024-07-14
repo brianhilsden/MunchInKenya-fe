@@ -14,24 +14,24 @@ import Cart from "./components/Cart";
 
 const routes = [
   {
-    path: "/",
+    path: "/MunchInKenya-fe",
     element: <App/>,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/", element: <LandingPage /> },
-      { path: "/contactUs", element: <ContactUs /> },
-      { path: "/foodItem/:id", element: <FoodItem /> },
-      { path: "/login", element: <Login /> },
+      { path: "/MunchInKenya-fe", element: <LandingPage /> },
+      { path: "/MunchInKenya-fe/contactUs", element: <ContactUs /> },
+      { path: "/MunchInKenya-fe/foodItem/:id", element: <FoodItem /> },
+      { path: "/MunchInKenya-fe/login", element: <Login /> },
       {
-        path: "/restaurantMenu/:id",
+        path: "/MunchInKenya-fe/restaurantMenu/:id",
         element: <RestaurantMenu />,
       },
-      { path: "/signUp", element: <SignUp /> },
-      { path: "/trackOrder", element: <TrackOrder /> },
+      { path: "/MunchInKenya-fe/signUp", element: <SignUp /> },
+      { path: "/MunchInKenya-fe/trackOrder", element: <TrackOrder /> },
 
-      {path:  "/feedbackForm", element:<FeedbackForm/>},
+      {path:  "/MunchInKenya-fe/feedbackForm", element:<FeedbackForm/>},
 
-      { path: "/cart", element: <Cart />}
+      { path: "/MunchInKenya-fe/cart", element: <Cart />}
 
     ]
   }

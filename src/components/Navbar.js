@@ -32,13 +32,13 @@ function Navbar({ search, setSearch, setUser, loggedIn, setIsLoggedIn, setCart }
     setIsLoggedIn(false);
     setCart([]);
     setUser(null);
-    navigate('/');
+    navigate('/MunchInKenya-fe');
   };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/MunchInKenya-fe">
           <img
             src={"https://i.pinimg.com/originals/ee/ec/17/eeec174a1c8a3bea023f3ce2fce90597.jpg"}
             width="120"
@@ -62,11 +62,11 @@ function Navbar({ search, setSearch, setUser, loggedIn, setIsLoggedIn, setCart }
         <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
           <ul className="navbar-nav mx-auto">
             <li className="nav-item">
-              <Link className="nav-link active p-3 fw-lighter fs-2" aria-current="page" to="/">Home</Link>
+              <Link className="nav-link active p-3 fw-lighter fs-2" aria-current="page" to="/MunchInKenya-fe">Home</Link>
             </li>
             {!loggedIn && (
               <li className="nav-item">
-                <Link className="nav-link active p-3 fw-lighter fs-2" aria-current="page" to="/login">Login</Link>
+                <Link className="nav-link active p-3 fw-lighter fs-2" aria-current="page" to="/MunchInKenya-fe/login">Login</Link>
               </li>
             )}
             <li className="nav-item dropdown">
@@ -75,16 +75,16 @@ function Navbar({ search, setSearch, setUser, loggedIn, setIsLoggedIn, setCart }
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <Link className="dropdown-item p-1 fw-lighter fs-4" to="/contactUs">Contact Us</Link>
+                  <Link className="dropdown-item p-1 fw-lighter fs-4" to="/MunchInKenya-fe/contactUs">Contact Us</Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item p-1 fw-lighter fs-4" to="/feedbackForm">Feedback</Link>
+                  <Link className="dropdown-item p-1 fw-lighter fs-4" to="/MunchInKenya-fe/feedbackForm">Feedback</Link>
                 </li>
               </ul>
             </li>
             {loggedIn && (
               <li className="nav-item">
-                <Link className="nav-link active p-3 fw-lighter fs-2" aria-current="page" to="/trackOrder">Orders</Link>
+                <Link className="nav-link active p-3 fw-lighter fs-2" aria-current="page" to="/MunchInKenya-fe/trackOrder">Orders</Link>
               </li>
             )}
           </ul>
@@ -102,14 +102,14 @@ function Navbar({ search, setSearch, setUser, loggedIn, setIsLoggedIn, setCart }
           </form>
           <div>
             {!loggedIn && (
-              <Link to="/signUp">
+              <Link to="/MunchInKenya-fe/signUp">
                 <button className="btn btn-outline-success btn-sm m-2">Signup</button>
               </Link>
             )}
             {loggedIn && (
               <button className="btn btn-outline-danger btn-sm m-2" onClick={logout}>Log out</button>
             )}
-            <Link to="/cart">
+            <Link to="/MunchInKenya-fe/cart">
               <img
                 src={"https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/256x256/shopping_cart.png"}
                 width="50"

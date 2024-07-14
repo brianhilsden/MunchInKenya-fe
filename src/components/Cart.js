@@ -29,7 +29,7 @@ function Cart() {
         })
         .then(data => {
             alert(`Purchased ${item.name} successfully!`);
-            navigate('/trackOrder');
+            navigate('/MunchInKenya-fe/trackOrder');
         })
         .catch(error => {
             console.error('There was a problem with the purchase:', error);

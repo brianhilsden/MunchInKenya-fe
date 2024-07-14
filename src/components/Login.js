@@ -51,7 +51,7 @@ function Login() {
               setError(null);
               setIsLoggedIn(true);
             })
-            .then(navigate("/"));
+            .then(navigate("/MunchInKenya-fe"));
         } else {
           
           res.json().then((err) => setError(err.error));
@@ -86,7 +86,7 @@ function Login() {
                 setError(null);
                 setIsLoggedIn(true);
               })
-              .then(navigate("/"));
+              .then(navigate("/MunchInKenya-fe"));
           } else {
             fetch("https://muchinkenya-be.onrender.com/signup", {
               method: "POST",
@@ -109,7 +109,7 @@ function Login() {
                     setError(null);
                     setIsLoggedIn(true);
                   })
-                  .then(() => navigate("/"));
+                  .then(() => navigate("/MunchInKenya-fe"));
               } else {
                 res.json().then((err) => setError(err.error));
               }
@@ -179,7 +179,7 @@ function Login() {
             </div>
           </div>
           <p className="signup-link">
-            Don't Have An Account? <a onClick={()=>navigate("/signUp")} style={{cursor: "pointer"}}>Sign Up</a>
+            Don't Have An Account? <a onClick={()=>navigate("/MunchInKenya-fe/signUp")} style={{cursor: "pointer"}}>Sign Up</a>
           </p>
         </div>
         <div className="login-right" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=1980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", backgroundSize: "cover" }}>

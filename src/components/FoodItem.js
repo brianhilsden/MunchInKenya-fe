@@ -29,7 +29,7 @@ function FoodItem() {
         }
         else if (foodItem) {
             addToCart(foodItem);
-            navigate('/cart');
+            navigate('/MunchInKenya-fe/cart');
             alert(`${foodItem.name} has been added to the cart!`);
         }
     };
