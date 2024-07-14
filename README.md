@@ -29,7 +29,7 @@ Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/your-username/munchinke.git
+git clone https://github.com/brianhilsden/MunchInKenya-fe
 cd munchinke
 Install dependencies:
 
@@ -63,5 +63,13 @@ bash
 Copy code
 git push origin feature/your-feature
 Open a pull request.
+
+Contributers
+ orinamecha2@gmail.com
+ Vikakamau04@gmail.com
+ Njeri255mungai@gmail.com
+ jafar.maalim@student.moringaschool.com
+ gracenjau2005@gmail.com
+
 📄 License
 This project is licensed under the MIT License.
