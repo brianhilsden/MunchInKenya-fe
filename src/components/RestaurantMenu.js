@@ -54,7 +54,7 @@ const RestaurantMenu = () => {
         <div className="row">
           {menu.map((item) => (
             <div className="col-md-4 mb-4" key={item.id}>
-              <Link to={`/fooditem/${item.id}`} className="text-decoration-none">
+              <Link to={`/MunchInKenya-fe/fooditem/${item.id}`} className="text-decoration-none">
                 <div className="card h-100">
                   <img
                     src={item.image}

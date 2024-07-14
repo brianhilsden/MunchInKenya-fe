@@ -45,7 +45,7 @@ const SignUp = () => {
             setUser(data.user);
             setError(null);
             setIsLoggedIn(true)
-          }).then(() => navigate("/"));
+          }).then(() => navigate("/MunchInKenya-fe"));
         } else {
           res.json().then((err) => setError(err.error));
         }
@@ -72,7 +72,7 @@ const SignUp = () => {
               setUser(data.user);
               setError(null);
               setIsLoggedIn(true)
-            }).then(navigate("/"));
+            }).then(navigate("/MunchInKenya-fe"));
           } else {
             fetch("https://muchinkenya-be.onrender.com/signup", {
               method: "POST",
@@ -87,7 +87,7 @@ const SignUp = () => {
                   setUser(data.user);
                   setError(null);
                   setIsLoggedIn(true)
-                }).then(() => navigate("/"));
+                }).then(() => navigate("/MunchInKenya-fe"));
               } else {
                 res.json().then((err) => setError(err.error));
               }
@@ -139,7 +139,7 @@ const SignUp = () => {
             <button type="submit" className="form-button">Sign Up</button>
           </form>
           {error && <div>{error}</div>}
-          <p className="login-link" onClick={() => navigate("/login")} style={{cursor:"pointer"}}>Already have an account?Log In</p>
+          <p className="login-link" onClick={() => navigate("/MunchInKenya-fe/login")} style={{cursor:"pointer"}}>Already have an account?Log In</p>
         </div>
         <div className="right" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", backgroundSize: "cover" }}>
         </div>
