@@ -5,6 +5,9 @@ import './LandingPage.css'; // Import the CSS file
 function LandingPage() {
   const [data, filteredList, addToCart, removeFromCart, cart, user, setUser, setIsLoggedIn] = useOutletContext();
 
+  if (user){
+    
+  }
   return (
     <div>
       <div className="container p-2 m-4">
@@ -45,7 +48,7 @@ function LandingPage() {
           {filteredList.map((restaurant) => (
             <div key={restaurant.id} className="col-sm-4 mb-2 mx-auto restaurant-card" id="restaurants">
               <div className="card">
-                <Link to={`/restaurantMenu/${restaurant.id}`}>
+                <Link to={`/MunchInKenya-fe/restaurantMenu/${restaurant.id}`}>
                   <img
                     src={restaurant.image}
                     className="card-img-top"
