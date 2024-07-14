@@ -55,6 +55,32 @@ function TrackOrder() {
 
 
     },[user])
+    useEffect(()=>{
+      if (orders.length ){
+        if(!latestOrder){
+          setLatestOrder(orders[0])
+          setCurrentOrder(orders[0])
+          setOrderStatus("Preparing order")
+          simulateOrderProgress()
+        
+
+        }
+        else if(latestOrder.id==orders[0].id){
+          setLatestOrder(orders[0])
+          
+        }
+        else{
+          setLatestOrder(orders[0])
+          setCurrentOrder(orders[0])
+          setOrderStatus("Preparing order")
+          simulateOrderProgress()
+          
+        }
+
+      }
+     
+
+    },[orders])
     
 
 
@@ -67,7 +93,7 @@ function TrackOrder() {
             body:JSON.stringify({
                 "message":message,
                 "customer_id":user.id,
-                "food_id":2
+                "food_id":currentOrder.food_id
             })
             
         }).then(res=>res.json())
@@ -75,33 +101,7 @@ function TrackOrder() {
         .then(setShowReview(false))
     }
 
-    useEffect(()=>{
-      if (orders.length ){
-        if(!latestOrder){
-          setLatestOrder(orders[0])
-          setCurrentOrder(orders[0])
-          setOrderStatus("Preparing order")
-          simulateOrderProgress()
-          console.log("1");
 
-        }
-        else if(latestOrder.id==orders[0].id){
-          setLatestOrder(orders[0])
-          
-        }
-        else{
-          setLatestOrder(orders[0])
-          setCurrentOrder(orders[0])
-          setOrderStatus("Preparing order")
-          simulateOrderProgress()
-          console.log("2");
-        }
-
-      }
-     
-
-    },[orders])
-    
     if (user){
         return (
             <div>

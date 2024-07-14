@@ -69,6 +69,12 @@ function Navbar({ search, setSearch, setUser, loggedIn, setIsLoggedIn, setCart }
                 <Link className="nav-link active p-3 fw-lighter fs-2" aria-current="page" to="/MunchInKenya-fe/login">Login</Link>
               </li>
             )}
+            
+            {loggedIn && (
+              <li className="nav-item">
+                <Link className="nav-link active p-3 fw-lighter fs-2" aria-current="page" to="/MunchInKenya-fe/trackOrder">Orders</Link>
+              </li>
+            )}
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle p-3 fw-lighter fs-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Contacts
@@ -82,11 +88,6 @@ function Navbar({ search, setSearch, setUser, loggedIn, setIsLoggedIn, setCart }
                 </li>
               </ul>
             </li>
-            {loggedIn && (
-              <li className="nav-item">
-                <Link className="nav-link active p-3 fw-lighter fs-2" aria-current="page" to="/MunchInKenya-fe/trackOrder">Orders</Link>
-              </li>
-            )}
           </ul>
           <form className="d-flex" onSubmit={handleSubmit}>
             <div className="d-flex align-items-center">

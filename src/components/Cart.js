@@ -39,23 +39,8 @@ function Cart() {
     };
 
     const handleRemove = (itemId) => {
-        fetch(`https://muchinkenya-be.onrender.com/${itemId}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
-            removeFromCart(itemId);
-        })
-        .catch(error => {
-            console.error('There was a problem with the removal:', error);
-            alert('Removal failed. Please try again.');
-        });
+        removeFromCart(itemId);
+        
     };
 
     return (
