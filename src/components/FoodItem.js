@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useOutletContext } from 'react-router-dom';
+
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
+
 
 function FoodItem() {
     const { id } = useParams();
@@ -18,7 +20,7 @@ function FoodItem() {
             .then(data => {
                 setFoodItem(data);
             })
-            .catch(error => console.error('Error fetching data:', error));
+            .catch(error => console.error('Error fetching food item:', error));
     }, [id]);
 
     const handleAddToCart = () => {
@@ -31,6 +33,7 @@ function FoodItem() {
             alert(`${foodItem.name} has been added to the cart!`);
         }
     };
+
     if (foodItem){
         return (
             <div
@@ -68,8 +71,25 @@ function FoodItem() {
                                     ) : (
                                         <p>Loading food item...</p>
                                     )}
+
                                 </div>
                             </div>
+                        </div>
+
+                        <div className="reviews mt-4">
+                            <h3 className="mb-3" style={{ color: '#ffffff', textAlign: 'center' }}>Reviews</h3>
+                            {foodItem.reviews && foodItem.reviews.length > 0 ? (
+                                <ul className="list-group">
+                                    {foodItem.reviews.map((review, index) => (
+                                        <li key={index} className="list-group-item">
+                                            <p className="mb-0">{review.message}</p>
+                                            {/* Add more details if available */}
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p className="text-muted text-center">No reviews yet.</p>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -8,8 +8,10 @@ function Cart() {
 
     const handlePurchase = (item) => {
         const purchaseData = {
+
             food_id: item.id,
             customer_id: user.id // Replace with the actual customer ID as needed
+
         };
 
         fetch('https://muchinkenya-be.onrender.com/orders', {
