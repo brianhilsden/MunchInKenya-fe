@@ -47,7 +47,7 @@ Order Page: Select items, customize your order, and proceed to checkout.
 Profile Page: Manage your account details and view past orders.
 Track Order: Monitor the status of your ongoing deliveries.
 🤝 Contributing
-We welcome contributions to enhance MunchInKe. To contribute:
+We welcome all contributions to enhance MunchInKe. To contribute:
 
 Fork the repository.
 Create a new branch:
