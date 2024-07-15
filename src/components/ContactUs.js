@@ -49,7 +49,8 @@ function ContactUs() {
   };
 
   return (
-    <div style={{backgroundImage:"https://unsplash.com/photos/a-wooden-cutting-board-topped-with-blueberries-and-grapes-Z8GEw7adf5U",height:"86vh"}}>
+    <div  style={{ backgroundImage: "url('https://plus.unsplash.com/premium_photo-1664551734513-7c7e0dd24fac?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",height:"88vh",display:"flex",alignItems:"center"}}>
+
     <div className="contact-us-form-container">
       <h2 style={{textAlign:'center'}}>Contact Us</h2>
       <form onSubmit={handleSubmit} className="contact-form">

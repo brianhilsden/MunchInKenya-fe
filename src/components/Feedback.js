@@ -45,10 +45,11 @@ function FeedbackForm() {
   };
 
   return (
-    <div style={{backgroundColor: '#f9f9f9', padding: '20px', borderRadius: '8px', boxShadow: '0 0 10px rgba(0,0,0,0.1)',height:"86vh" }}>
-    <div className="feedback-form">
+        <div style={{ backgroundImage: "url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", padding: '20px', borderRadius: '8px', boxShadow: '0 0 10px rgba(0,0,0,0.1)', height: '88vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+
+    <div className="feedback-form" style={{width:"100%"}}>
       <h2 style={{textAlign: 'center'}}>Feedback Form</h2>
-      <form onSubmit={handleSubmit} style={{maxWidth: '500px', margin: '0 auto', padding: '20px', borderRadius: '8px', boxShadow: '0 0 10px rgba(0,0,0,0.1)', backgroundColor: '#f9f9f9'}}>
+      <form onSubmit={handleSubmit} style={{width: '500px', margin: '0 auto', padding: '20px', borderRadius: '8px', boxShadow: '0 0 10px rgba(0,0,0,0.1)', backgroundColor: '#f9f9f9',textAlign:"center"}}>
         <div style={{marginBottom: '20px'}}>
           <label htmlFor="name" style={{display: 'block', marginBottom: '5px'}}>Name:</label>
           <input
