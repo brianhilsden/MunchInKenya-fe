@@ -19,7 +19,7 @@ function LandingPage() {
         />
       </div>
 
-      <div className="row bg-light m-3" style={{ height: "60vh" }}>
+      <div className="row bg-light m-3" >
         <div className="col-md-6">
           <header>
             <h2 className="text-center fst-italic text-secondary fs-1">Welcome To MunchinKenya</h2>
