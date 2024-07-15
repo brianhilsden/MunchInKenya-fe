@@ -10,11 +10,11 @@ function LandingPage() {
   }
   return (
     <div>
-      <div className="container p-2 m-4">
+      <div className="container-fluid m-1  ">
         <img
           src={"https://thumbs.dreamstime.com/b/concept-horizontal-promotional-flyer-poster-restaurant-pizzeria-menu-delicious-taste-pizza-pepperoni-slice-mozzarella-134778484.jpg"}
           className="landing-img"
-          style={{ width: "1820px", height: "550px", objectFit: "cover" }}
+          style={{ width: "100%", height: "550px", objectFit: "cover" }}
           alt=""
         />
       </div>
