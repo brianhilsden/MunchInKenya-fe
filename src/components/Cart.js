@@ -14,7 +14,7 @@ function Cart() {
 
         };
 
-        fetch('https://muchinkenya-be.onrender.com/orders', {
+        fetch('https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/orders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -32,7 +32,7 @@ const SignUp = () => {
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
-      fetch("https://muchinkenya-be.onrender.com/signup", {
+      fetch("https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const SignUp = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
-        fetch("https://muchinkenya-be.onrender.com/userByEmail", {
+        fetch("https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/userByEmail", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -74,7 +74,7 @@ const SignUp = () => {
               setIsLoggedIn(true)
             }).then(navigate("/MunchInKenya-fe"));
           } else {
-            fetch("https://muchinkenya-be.onrender.com/signup", {
+            fetch("https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/signup", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
