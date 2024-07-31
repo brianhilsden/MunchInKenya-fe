@@ -21,7 +21,7 @@ function ContactUs() {
 
     try {
       // Make the API call to send the form data to the backend
-      const response = await fetch('https://muchinkenya-be.onrender.com/contact', {
+      const response = await fetch('https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

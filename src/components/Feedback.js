@@ -20,7 +20,7 @@ function FeedbackForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://muchinkenya-be.onrender.com/feedback', {
+      const response = await fetch('https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -47,7 +47,7 @@ function TrackOrder() {
     useEffect(()=>{
         if (user){
 
-        fetch(`https://muchinkenya-be.onrender.com/past_orders/${user.id}`)
+        fetch(`https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/past_orders/${user.id}`)
         .then(res=>res.json())
         .then(data=>setOrders(data))
         }
@@ -87,7 +87,7 @@ function TrackOrder() {
     function reviewFood(e){
 
         e.preventDefault()
-        fetch("https://muchinkenya-be.onrender.com/reviews",{
+        fetch("https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/reviews",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({
