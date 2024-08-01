@@ -2,7 +2,7 @@
   "name": "munchinkenya-fe",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://brianhilsden.github.io/MunchInKenya-fe",
+  "homepage": "https://brianhilsden.github.io/MunchInKenya-fe",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
     "@testing-library/jest-dom": "^5.17.0",
@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "gh-pages": "^6.1.1"
   }
 }
