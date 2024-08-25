@@ -35,7 +35,7 @@ function Login() {
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
-      fetch("https:munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/login", {
+      fetch("https://munchinkenya-be.vercel.app/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -70,7 +70,9 @@ function Login() {
 
         // The signed-in user info.
         const user = result.user;
-        fetch("https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/userByEmail", {
+        console.log(user);
+        
+        fetch("https://munchinkenya-be.vercel.app/userByEmail", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -83,12 +85,13 @@ function Login() {
               .then((data) => {
                 localStorage.setItem("access_token", data.access_token);
                 setUser(data.user);
+              
                 setError(null);
                 setIsLoggedIn(true);
               })
               .then(navigate("/MunchInKenya-fe"));
           } else {
-            fetch("https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/signup", {
+            fetch("https://munchinkenya-be.vercel.app/signup", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

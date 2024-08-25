@@ -13,7 +13,7 @@ const RestaurantMenu = () => {
   useEffect(() => {
     const fetchMenu = async () => {
       try {
-        const response = await axios.get(`https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/restaurant_menu/${id}`);
+        const response = await axios.get(`https://munchinkenya-be.vercel.app/restaurant_menu/${id}`);
         setMenu(response.data);
         setLoading(false);
       } catch (err) {

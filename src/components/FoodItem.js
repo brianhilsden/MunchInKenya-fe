@@ -14,7 +14,7 @@ function FoodItem() {
     const [foodItem, setFoodItem] = useState(null);
 
     useEffect(() => {
-        fetch(`https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/food_by_id/${id}`)
+        fetch(`https://munchinkenya-be.vercel.app/food_by_id/${id}`)
             .then(res => res.json())
             .then(data => {
                 setFoodItem(data);
