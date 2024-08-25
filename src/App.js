@@ -30,7 +30,7 @@ function App() {
     useEffect(() => {
       const token = localStorage.getItem('access_token');
       if (token) {
-        fetch('https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/check_session', {
+        fetch('https://munchinkenya-be.vercel.app/check_session', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -55,7 +55,7 @@ function App() {
     }, []);
 
     useEffect(()=>{
-        fetch("https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/restaurant")
+        fetch("https://munchinkenya-be.vercel.app/restaurant")
         .then((res)=>res.json())
         .then((data)=>setData(data))
     },[])
@@ -82,7 +82,7 @@ function App() {
     
       useEffect(()=>{
         if (user){
-          fetch(`https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/past_orders/${user.id}`)
+          fetch(`https://munchinkenya-be.vercel.app/past_orders/${user.id}`)
         .then(res=>res.json())
         .then(data=>setLatestOrder(data[0]))
 

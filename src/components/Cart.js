@@ -14,7 +14,7 @@ function Cart() {
 
         };
 
-        fetch('https://munchinkenya-7uhdoq4y7-brianhilsdens-projects.vercel.app/orders', {
+        fetch('https://munchinkenya-be.vercel.app/orders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
