@@ -12,9 +12,9 @@ function LandingPage() {
     <div>
       <div className="container-fluid m-1  ">
         <img
-          src={"https://thumbs.dreamstime.com/b/concept-horizontal-promotional-flyer-poster-restaurant-pizzeria-menu-delicious-taste-pizza-pepperoni-slice-mozzarella-134778484.jpg"}
+          src={"https://www.wfla.com/wp-content/uploads/sites/71/2023/04/GettyImages-1407832840.jpg?w=2560&h=1440&crop=1"}
           className="landing-img"
-          style={{ width: "100%", height: "550px", objectFit: "cover" }}
+          style={{ width: "100%", height: "550px", objectFit: "cover", filter: "brightness(90%)" }}
           alt=""
         />
       </div>
