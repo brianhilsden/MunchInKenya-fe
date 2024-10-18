@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/MunchInKenya-fe/static/css/main.3ef609fb.css",
-    "main.js": "/MunchInKenya-fe/static/js/main.56aaac3c.js",
+    "main.js": "/MunchInKenya-fe/static/js/main.729df826.js",
     "static/js/453.de177bd9.chunk.js": "/MunchInKenya-fe/static/js/453.de177bd9.chunk.js",
     "static/media/Logo-google-icon-PNG.png": "/MunchInKenya-fe/static/media/Logo-google-icon-PNG.85948811cb56223e2ced.png",
     "index.html": "/MunchInKenya-fe/index.html",
     "main.3ef609fb.css.map": "/MunchInKenya-fe/static/css/main.3ef609fb.css.map",
-    "main.56aaac3c.js.map": "/MunchInKenya-fe/static/js/main.56aaac3c.js.map",
+    "main.729df826.js.map": "/MunchInKenya-fe/static/js/main.729df826.js.map",
     "453.de177bd9.chunk.js.map": "/MunchInKenya-fe/static/js/453.de177bd9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3ef609fb.css",
-    "static/js/main.56aaac3c.js"
+    "static/js/main.729df826.js"
   ]
 }
