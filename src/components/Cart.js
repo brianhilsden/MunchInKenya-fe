@@ -1,6 +1,7 @@
 import React from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function Cart() {
     const [data, filteredList, addToCart, removeFromCart, cart, user, setUser, setIsLoggedIn] = useOutletContext();
@@ -8,10 +9,8 @@ function Cart() {
 
     const handlePurchase = (item) => {
         const purchaseData = {
-
             food_id: item.id,
             customer_id: user.id // Replace with the actual customer ID as needed
-
         };
 
         fetch('https://munchinkenya-be.vercel.app/orders', {
@@ -35,55 +34,64 @@ function Cart() {
             console.error('There was a problem with the purchase:', error);
             alert('Purchase failed. Please try again.');
         });
-        
     };
 
     const handleRemove = (itemId) => {
         removeFromCart(itemId);
-        
     };
 
     return (
         <div
-            className="container my-4 rounded"
+            className="min-h-screen bg-cover bg-center flex flex-col items-center justify-center"
             style={{
-                backgroundImage: `url('https://images.unsplash.com/32/Mc8kW4x9Q3aRR3RkP5Im_IMG_4417.jpg?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`, // Background image URL
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                backgroundColor: '#f5f5dc', // Beige color to complement the image
-                minHeight: '100vh', // Ensure the container fills the viewport height
-                padding: '20px' // Add padding for spacing
+                backgroundImage: `url('https://images.unsplash.com/32/Mc8kW4x9Q3aRR3RkP5Im_IMG_4417.jpg?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+                backgroundColor: '#f5f5dc',
             }}
         >
-            <h1 className="text-center mb-4" style={{ color: '#ffffff' }}>Your Cart</h1> {/* White text for contrast */}
+            <h1 className="text-white text-4xl mb-6 font-bold">Your Cart</h1>
 
             {cart.length === 0 ? (
-                <p className="text-center text-muted">Your cart is empty</p>
+                <p className="text-center text-textSecondary">Your cart is empty</p>
             ) : (
-                <div className="row">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {cart.map((item) => (
-                        <div key={item.id} className="col-md-4 mb-4">
-                            <div className="card" style={{ backgroundColor: '#bfbfbf' }}>
-                                <img src={item.image} alt={item.name} className="card-img-top" style={{ height: '200px', objectFit: 'cover' }} />
-                                <div className="card-body">
-                                    <h5 className="card-title" style={{ color: '#ffffff' }}>{item.name}</h5> {/* White text for contrast */}
-                                    <p className="card-text" style={{ color: '#ffffff' }}>{item.description}</p> {/* White text for contrast */}
-                                    <p className="card-text" style={{ color: '#ffffff' }}>
-                                        <strong>Price: {item.price.toFixed(2)}</strong>
-                                    </p>
-                                    <button className="btn btn-danger me-2" onClick={() => handleRemove(item.id)}>Remove</button>
-                                    <button className="btn btn-primary" onClick={() => handlePurchase(item)}>Purchase</button>
+                        <motion.div
+                            key={item.id}
+                            className="bg-surface rounded-lg shadow-lg overflow-hidden"
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <img
+                                src={item.image}
+                                alt={item.name}
+                                className="w-full h-48 object-cover"
+                            />
+                            <div className="p-4">
+                                <h5 className="text-primary text-lg font-semibold mb-2">{item.name}</h5>
+                                <p className="text-textSecondary mb-2">{item.description}</p>
+                                <p className="text-accent font-bold mb-4">Price: {item.price.toFixed(2)}</p>
+                                <div className="flex justify-between">
+                                    <button
+                                        className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
+                                        onClick={() => handleRemove(item.id)}
+                                    >
+                                        Remove
+                                    </button>
+                                    <button
+                                        className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark"
+                                        onClick={() => handlePurchase(item)}
+                                    >
+                                        Purchase
+                                    </button>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             )}
-            
         </div>
     );
 }
 
 export default Cart;
-

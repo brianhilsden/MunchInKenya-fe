@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Feedback.css';
+import { motion } from 'framer-motion';
 
 function FeedbackForm() {
   const [formData, setFormData] = useState({
@@ -46,45 +46,66 @@ function FeedbackForm() {
   };
 
   return (
-    <div style={{ backgroundImage: "url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", height: '88vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundSize:"100%" }}>
-      <div className="feedback-form-container">
-        <h2>Feedback Form</h2>
-        <form onSubmit={handleSubmit} className="feedback-form">
+    <div
+      className="min-h-screen bg-cover bg-center flex items-center justify-center"
+      style={{
+        backgroundImage: `url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+      }}
+    >
+      <motion.div
+        className="bg-surface rounded-lg p-8 shadow-lg w-full max-w-lg"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h2 className="text-primary text-3xl font-semibold mb-6 text-center">Feedback Form</h2>
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div className="form-group">
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name" className="block text-textPrimary font-medium mb-2">Name:</label>
             <input
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               required
             />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email" className="block text-textPrimary font-medium mb-2">Email:</label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               required
             />
           </div>
           <div className="form-group">
-            <label htmlFor="feedback">Feedback:</label>
+            <label htmlFor="feedback" className="block text-textPrimary font-medium mb-2">Feedback:</label>
             <textarea
               id="feedback"
               name="feedback"
               value={formData.feedback}
               onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              rows="5"
               required
             />
           </div>
-          <button type="submit">Submit</button>
+          <motion.button
+            type="submit"
+            className="bg-primary text-white py-2 px-4 rounded w-full hover:bg-primary-dark transition-all duration-200"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Submit
+          </motion.button>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 }
