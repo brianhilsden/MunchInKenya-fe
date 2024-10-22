@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import { Outlet } from 'react-router-dom';
 
 import { useState, useEffect } from 'react';
+import Footer from './components/Footer';
 
 function App() {
     const [cart, setCart] = useState([]);
@@ -93,14 +94,19 @@ function App() {
     
       
   return (
-    <>
+    <div className='bg-gray-100 flex flex-col min-h-screen'>
 
       <Navbar search = {search} setSearch={setSearch} setUser={setUser} loggedIn={loggedIn} setIsLoggedIn={setIsLoggedIn} setCart={setCart}/>
+      <div className='flex-grow'>
       <Outlet context={[data,filteredList,addToCart,removeFromCart,cart,user,setUser,setIsLoggedIn,latestOrder,setLatestOrder]}/>  
+      </div>
+      <div className='bottom-0'>      <Footer/>
+      </div>
 
 
 
-    </>
+
+    </div>
   )
   }
 
